@@ -36,7 +36,7 @@
 #define MOUS  3
 #define SYM   4
 #define NUM   5
-#define FUNC  6
+/* #define FUNC  6 */
 
 // hold-trigger-key-positions definitions
 #define HOLD_TRIGGER_KEYS_THUMBS 32 33 34 35 36 37
@@ -47,25 +47,26 @@
 #define HL(TAP, MOD) &b_hml MOD TAP     // Homerow mod (left)
 #define HR(TAP, MOD) &b_hmr MOD TAP     // Homerow mod (right)
 #define LR(TAP, LAYER) &b_ltr LAYER TAP // Layer tap (repeat)
-#define BT(CHANNEL) &b_bc_##CHANNEL     // Bluetooth toggle
+/* #define BT(CHANNEL) &b_bc_##CHANNEL     // Bluetooth toggle */
+#define BT(CHANNEL) &none     // Bluetooth toggle
 #define CS(TAP, SHIFT) &b_##TAP##SHIFT  // Custom shift
 #define MM(DIR) &mmv MOVE_##DIR         // Mouse move
 #define MS(DIR) &msc SCRL_##DIR         // Mouse scroll
 
-// Bluetooth connect/disconnect/clear helper macro
-#define B_BT(CHANNEL) \
-  b_bd_##CHANNEL: bluetooth_disconnect_##CHANNEL { \
-    compatible = "zmk,behavior-mod-morph"; \
-    #binding-cells = <0>; \
-    bindings = <&bt BT_DISC CHANNEL>, <&m_bcl CHANNEL>; \
-    mods = <(MOD_LCTL|MOD_RCTL)>; \
-  }; \
-  b_bc_##CHANNEL: bluetooth_connect_##CHANNEL { \
-    compatible = "zmk,behavior-mod-morph"; \
-    #binding-cells = <0>; \
-    bindings = <&bt BT_SEL CHANNEL>, <&b_bd_##CHANNEL>; \
-    mods = <(MOD_LSFT|MOD_RSFT)>; \
-  };
+/* // Bluetooth connect/disconnect/clear helper macro */
+/* #define B_BT(CHANNEL) \ */
+/*   b_bd_##CHANNEL: bluetooth_disconnect_##CHANNEL { \ */
+/*     compatible = "zmk,behavior-mod-morph"; \ */
+/*     #binding-cells = <0>; \ */
+/*     bindings = <&bt BT_DISC CHANNEL>, <&m_bcl CHANNEL>; \ */
+/*     mods = <(MOD_LCTL|MOD_RCTL)>; \ */
+/*   }; \ */
+/*   b_bc_##CHANNEL: bluetooth_connect_##CHANNEL { \ */
+/*     compatible = "zmk,behavior-mod-morph"; \ */
+/*     #binding-cells = <0>; \ */
+/*     bindings = <&bt BT_SEL CHANNEL>, <&b_bd_##CHANNEL>; \ */
+/*     mods = <(MOD_LSFT|MOD_RSFT)>; \ */
+/*   }; */
 
 // Custom shift-ed key helper macro
 #define B_CS(TAP, SHIFT) \
@@ -82,18 +83,18 @@
 // MACROS //
 ////////////
 
-/ {
-  macros {
-    m_bcl: bluetooth_clear_profile {
-      compatible = "zmk,behavior-macro-one-param";
-      wait-ms = <0>;
-      #binding-cells = <1>;
-      bindings = <&macro_param_1to2>,
-                 <&bt BT_SEL MACRO_PLACEHOLDER>,
-                 <&bt BT_CLR>;
-     };
-  };
-};
+/* / { */
+/*   macros { */
+/*     m_bcl: bluetooth_clear_profile { */
+/*       compatible = "zmk,behavior-macro-one-param"; */
+/*       wait-ms = <0>; */
+/*       #binding-cells = <1>; */
+/*       bindings = <&macro_param_1to2>, */
+/*                  <&bt BT_SEL MACRO_PLACEHOLDER>, */
+/*                  <&bt BT_CLR>; */
+/*      }; */
+/*   }; */
+/* }; */
 
 ///////////////
 // BEHAVIORS //
@@ -106,7 +107,7 @@
       #binding-cells = <2>;
       tapping-term-ms = <TAPPING_TERM_HM>;
       require-prior-idle-ms = <PRIOR_IDLE>;
-      quick-tap-ms = <QUICK_TAP>;
+      /* quick-tap-ms = <QUICK_TAP>; */
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <HOLD_TRIGGER_KEYS_RIGHT HOLD_TRIGGER_KEYS_THUMBS>;
@@ -117,7 +118,7 @@
       #binding-cells = <2>;
       tapping-term-ms = <TAPPING_TERM_HM>;
       require-prior-idle-ms = <PRIOR_IDLE>;
-      quick-tap-ms = <QUICK_TAP>;
+      /* quick-tap-ms = <QUICK_TAP>; */
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <HOLD_TRIGGER_KEYS_LEFT HOLD_TRIGGER_KEYS_THUMBS>;
@@ -131,10 +132,10 @@
       quick-tap-ms = <QUICK_TAP>;
       bindings = <&mo>, <&kp>;	
     };
-    B_BT(0)
-    B_BT(1)
-    B_BT(2)
-    B_BT(3)
+    /* B_BT(0) */
+    /* B_BT(1) */
+    /* B_BT(2) */
+    /* B_BT(3) */
     B_CS(COMMA, EXCL)
     B_CS(DOT, QMARK)
   };
@@ -161,7 +162,7 @@
                 &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J       &kp L        &kp U          &kp Y         &kp SQT
                 HL(A,LGUI)  HL(R,LALT)  HL(S,LCTRL) HL(T,LSHFT) &kp G           &kp M       HR(N,LSHFT)  HR(E,LCTRL)    HR(I,LALT)    HR(O,LGUI)
     &kp LSHFT   &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K       &kp H        CS(COMMA,EXCL) CS(DOT,QMARK) &kp SEMI   &kp RSHFT
-                                     LR(ESC,MEDI) LR(SPACE,NAV) LR(TAB,MOUS)    LR(RET,NUM) LR(BSPC,SYM) LR(DEL,FUNC)
+                                     LR(ESC,MEDI) LR(SPACE,NAV) LR(TAB,MOUS)    LR(RET,NUM) LR(BSPC,SYM) LR(DEL,SYM)
       >;
     };
 
@@ -258,18 +259,18 @@
 //////////
 // TODO //
 //////////
-    func_layer {
-// -----------------------------------------------------------------------------------------
-//        |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  |  '  |
-//        |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  |
-// | SHFT |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | SHFT |
-//                    | ESC | SPC | TAB |   | RET |BSPC | DEL |
-      bindings = <
-                  &kp Q        &kp W        &kp F           &kp P           &kp B            &kp J         &kp L          &kp U          &kp Y        &kp SQT
-                  HL(A,LGUI)  HL(R,LALT)  HL(S,LCTRL)   HL(T,LSHFT)   &kp G            &kp M         HR(N,RSHFT)  HR(E,RCTRL)  HR(I,RALT) HR(O,RGUI)
-        &kp LSHFT &kp Z        &kp X        &kp C           &kp D           &kp V            &kp K         &kp H          &kp COMMA      &kp DOT      &kp SLASH    &kp RSHFT
-                                            LR(ESC,MEDI) LR(SPACE,NAV) LR(TAB,MOUS)  LR(RET,SYM) LR(BSPC,NUM) LR(DEL,FUNC)
-      >;
-    };
+/*     func_layer { */
+/* // ----------------------------------------------------------------------------------------- */
+/* //        |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  |  '  | */
+/* //        |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  | */
+/* // | SHFT |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | SHFT | */
+/* //                    | ESC | SPC | TAB |   | RET |BSPC | DEL | */
+/*       bindings = < */
+/*                   &kp Q        &kp W        &kp F           &kp P           &kp B            &kp J         &kp L          &kp U          &kp Y        &kp SQT */
+/*                   HL(A,LGUI)  HL(R,LALT)  HL(S,LCTRL)   HL(T,LSHFT)   &kp G            &kp M         HR(N,RSHFT)  HR(E,RCTRL)  HR(I,RALT) HR(O,RGUI) */
+/*         &kp LSHFT &kp Z        &kp X        &kp C           &kp D           &kp V            &kp K         &kp H          &kp COMMA      &kp DOT      &kp SLASH    &kp RSHFT */
+/*                                             LR(ESC,MEDI) LR(SPACE,NAV) LR(TAB,MOUS)  LR(RET,SYM) LR(BSPC,NUM) LR(DEL,FUNC) */
+/*       >; */
+/*     }; */
   };
 };
