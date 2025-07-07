@@ -153,14 +153,14 @@
             timeout-ms = <COMBO_TIMEOUT>;
             key-positions = <33 34>;
             bindings = <&mo SYM>;
-        },
+        };
         c_lsr: layer_switch_right {
             timeout-ms = <COMBO_TIMEOUT>;
             key-positions = <35 36>;
             bindings = <&mo SYM>;
-        }
-    }
-}
+        };
+    };
+};
 
 ////////////
 // KEYMAP //
