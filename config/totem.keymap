@@ -260,6 +260,7 @@
     &none       &kp EXCL    &kp ASTRK   &kp PLUS    &kp EQUAL   &kp HASH        &none       &none       &none       &none       &none       &none
                                         &none       &none       &none           &none       &none       &none
       >;
+    };
 
     symr_layer {
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
