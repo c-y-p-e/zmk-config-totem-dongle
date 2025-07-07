@@ -152,13 +152,13 @@
         compatible = "zmk,combos";
         c_lsl: layer_switch_left {
             timeout-ms = <COMBO_TIMEOUT>;
-            layers = <BASE>
+            layers = <BASE>;
             key-positions = <33 34>;
             bindings = <&mo SYMR>;
         };
         c_lsr: layer_switch_right {
             timeout-ms = <COMBO_TIMEOUT>;
-            layers = <BASE>
+            layers = <BASE>;
             key-positions = <35 36>;
             bindings = <&mo SYML>;
         };
