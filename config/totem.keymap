@@ -9,6 +9,8 @@
 #define TAPPING_TERM_HM               1000 /* Time before home row mods register as held */
 #define PRIOR_IDLE                    150  /* Time without keypress for home row mods to register */
 
+#define COMBO_TIMEOUT                 50   /* Time in between combo keypresses */
+
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500 /* Amount of mouse movement */
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20   /* Amount of mouse scroll */
 
@@ -142,6 +144,25 @@
 };
 
 ////////////
+// Combos //
+////////////
+/ {
+    combos {
+        compatible = "zmk,combos";
+        c_lsl: layer_switch_left {
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <33 34>;
+            bindings = <&mo SYM>;
+        },
+        c_lsr: layer_switch_right {
+            timeout-ms = <COMBO_TIMEOUT>;
+            key-positions = <35 36>;
+            bindings = <&mo SYM>;
+        }
+    }
+}
+
+////////////
 // KEYMAP //
 ////////////
 
@@ -162,7 +183,7 @@
                 &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J       &kp L        &kp U          &kp Y         &kp SQT
                 HL(A,LGUI)  HL(R,LALT)  HL(S,LCTRL) HL(T,LSHFT) &kp G           &kp M       HR(N,LSHFT)  HR(E,LCTRL)    HR(I,LALT)    HR(O,LGUI)
     &kp LSHFT   &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K       &kp H        CS(COMMA,EXCL) CS(DOT,QMARK) &kp SEMI   &kp RSHFT
-                                     LR(ESC,MEDI) LR(SPACE,NAV) LR(TAB,MOUS)    LR(RET,NUM) LR(BSPC,SYM) LR(DEL,SYM)
+                                     LR(ESC,MEDI) LR(SPACE,NAV) LR(TAB,MOUS)    LR(RET,NUM) LR(BSPC,NUM) LR(DEL,NUM)
       >;
     };
 
