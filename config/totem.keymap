@@ -36,9 +36,10 @@
 #define MEDI  1
 #define NAV   2
 #define MOUS  3
-#define SYM   4
-#define NUM   5
-/* #define FUNC  6 */
+#define SYML  4
+#define SYMR  5
+#define NUM   6
+/* #define FUNC  7 */
 
 // hold-trigger-key-positions definitions
 #define HOLD_TRIGGER_KEYS_THUMBS 32 33 34 35 36 37
@@ -151,13 +152,15 @@
         compatible = "zmk,combos";
         c_lsl: layer_switch_left {
             timeout-ms = <COMBO_TIMEOUT>;
+            layers = <BASE>
             key-positions = <33 34>;
-            bindings = <&mo SYM>;
+            bindings = <&mo SYMR>;
         };
         c_lsr: layer_switch_right {
             timeout-ms = <COMBO_TIMEOUT>;
+            layers = <BASE>
             key-positions = <35 36>;
-            bindings = <&mo SYM>;
+            bindings = <&mo SYML>;
         };
     };
 };
@@ -241,20 +244,37 @@
       >;
     };
 
-    sym_layer {
+    syml_layer {
 //             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-//             ┃     ^     ┃     <     ┃     >     ┃     \     ┃           ┃   ┃     &     ┃     ;     ┃     [     ┃     ]     ┃     %     ┃
+//             ┃     ^     ┃     <     ┃     >     ┃     \     ┃           ┃   ┃           ┃           ┃           ┃           ┃           ┃
 //             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-//             ┃     -     ┃     ~     ┃     .     ┃     /     ┃     _     ┃   ┃     |     ┃     :     ┃     (     ┃     )     ┃     @     ┃
+//             ┃     -     ┃     ~     ┃     .     ┃     /     ┃     _     ┃   ┃           ┃   LSHFT   ┃   LCTRL   ┃   LALT    ┃   LGUI    ┃
 // ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
-// ┃           ┃     !     ┃     *     ┃     +     ┃     =     ┃     #     ┃   ┃           ┃     $     ┃     {     ┃     }     ┃     ?     ┃           ┃
+// ┃           ┃     !     ┃     *     ┃     +     ┃     =     ┃     #     ┃   ┃           ┃           ┃           ┃           ┃           ┃           ┃
 // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
       bindings = <
-                &kp CARET   &kp LT      &kp GT      &kp BSLH    &none           &kp AMPS    &kp SEMI    &kp LBKT    &kp RBKT    &kp PRCNT
-                &kp MINUS   &kp TILDE   &kp DOT     &kp FSLH    &kp UNDER       &kp PIPE    &kp COLON   &kp LPAR    &kp RPAR    &kp AT
-    &none       &kp EXCL    &kp ASTRK   &kp PLUS    &kp EQUAL   &kp HASH        &none       &kp DLLR    &kp LBRC    &kp RBRC    &kp QMARK   &none
+                &kp CARET   &kp LT      &kp GT      &kp BSLH    &none           &none       &none       &none       &none       &none  
+                &kp MINUS   &kp TILDE   &kp DOT     &kp FSLH    &kp UNDER       &none       &kp LSHFT   &kp LCTRL   &kp LALT    &kp LGUI
+    &none       &kp EXCL    &kp ASTRK   &kp PLUS    &kp EQUAL   &kp HASH        &none       &none       &none       &none       &none       &none
+                                        &none       &none       &none           &none       &none       &none
+      >;
+
+    symr_layer {
+//             ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+//             ┃           ┃           ┃           ┃           ┃           ┃   ┃     &     ┃     ;     ┃     [     ┃     ]     ┃     %     ┃
+//             ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
+//             ┃   LGUI    ┃   LALT    ┃   LCTRL   ┃   LSHFT   ┃           ┃   ┃     |     ┃     :     ┃     (     ┃     )     ┃     @     ┃
+// ┏━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┓
+// ┃           ┃           ┃           ┃           ┃           ┃           ┃   ┃           ┃     $     ┃     {     ┃     }     ┃     ?     ┃           ┃
+// ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+//                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
+//                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
+      bindings = <
+                &none       &none       &none       &none       &none           &kp AMPS    &kp SEMI    &kp LBKT    &kp RBKT    &kp PRCNT
+                &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none           &kp PIPE    &kp COLON   &kp LPAR    &kp RPAR    &kp AT
+    &none       &none       &none       &none       &none       &none           &none       &kp DLLR    &kp LBRC    &kp RBRC    &kp QMARK   &none
                                         &none       &none       &none           &none       &none       &none
       >;
     };
