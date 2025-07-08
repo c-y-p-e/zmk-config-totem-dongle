@@ -226,7 +226,7 @@
 //                                     ┃           ┃           ┃           ┃   ┃    RET    ┃   BSPC    ┃    DEL    ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
       bindings = <
-                &none       &none       &none       &none       &none           REDO        PASTE       COPY        CUT         &kp UNDO
+                &none       &none       &none       &none       &none           REDO        PASTE       COPY        CUT         UNDO
                 &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none           &caps_word  &kp LEFT    &kp DOWN    &kp UP      &kp RIGHT
    &none        &none       &none       &none       &none       &none           &none       &kp HOME    &kp PG_DN   &kp PG_UP   &kp END     &none
                                         &none       &none       &none           &kp RET     &kp BSPC    &kp DEL
