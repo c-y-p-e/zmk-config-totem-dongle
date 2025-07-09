@@ -117,7 +117,6 @@
       #binding-cells = <2>;
       tapping-term-ms = <TAPPING_TERM_HM>;
       require-prior-idle-ms = <PRIOR_IDLE>;
-      /* quick-tap-ms = <QUICK_TAP>; */
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <HOLD_TRIGGER_KEYS_RIGHT HOLD_TRIGGER_KEYS_THUMBS>;
@@ -128,7 +127,6 @@
       #binding-cells = <2>;
       tapping-term-ms = <TAPPING_TERM_HM>;
       require-prior-idle-ms = <PRIOR_IDLE>;
-      /* quick-tap-ms = <QUICK_TAP>; */
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <HOLD_TRIGGER_KEYS_LEFT HOLD_TRIGGER_KEYS_THUMBS>;
@@ -148,6 +146,9 @@
     /* B_BT(3) */
     B_CS(COMMA, EXCL)
     B_CS(DOT, QMARK)
+    B_CS(BSLH, BSLH)
+    B_CS(RBKT, RBKT)
+    B_CS(LBKT, LBKT)
   };
 };
 
@@ -163,12 +164,12 @@
             key-positions = <33 34>;
             bindings = <&mo MOUS>;
         };
-        c_lsr: layer_switch_right {
-            timeout-ms = <COMBO_TIMEOUT>;
-            layers = <BASE>;
-            key-positions = <35 36>;
-            bindings = <&mo SYML>;
-        };
+        /* c_lsr: layer_switch_right { */
+        /*     timeout-ms = <COMBO_TIMEOUT>; */
+        /*     layers = <BASE>; */
+        /*     key-positions = <35 36>; */
+        /*     bindings = <&mo SYML>; */
+        /* }; */
     };
 };
 
@@ -262,10 +263,10 @@
 //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
       bindings = <
-                &kp CARET   &kp LT      &kp GT      &kp BSLH    &none           &none       &none       &none       &none       &none  
-                &kp MINUS   &kp TILDE   &kp DOT     &kp FSLH    &kp UNDER       &none       &kp LSHFT   &kp LCTRL   &kp LALT    &kp LGUI
-    &none       &kp EXCL    &kp ASTRK   &kp PLUS    &kp EQUAL   &kp HASH        &none       &none       &none       &none       &none       &none
-                                        &none       &none       &none           &none       &none       &none
+                &kp CARET   &kp LT      &kp GT      CS(BSLH,BSLH) &none         &none       &none       &none       &none       &none  
+                &kp MINUS   &kp TILDE   &kp DOT     &kp KP_SLASH  &kp UNDER     &none       &kp LSHFT   &kp LCTRL   &kp LALT    &kp LGUI
+    &none       &kp EXCL    &kp ASTRK   &kp PLUS    &kp EQUAL     &kp HASH      &none       &none       &none       &none       &none       &none
+                                        &none       &none         &none         &none       &none       &none
       >;
     };
 
@@ -280,9 +281,9 @@
 //                                     ┃           ┃           ┃           ┃   ┃           ┃           ┃           ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
       bindings = <
-                &none       &none       &none       &none       &none           &kp AMPS    &kp SEMI    &kp LBKT    &kp RBKT    &kp PRCNT
-                &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none           &kp PIPE    &kp COLON   &kp LPAR    &kp RPAR    &kp AT
-    &none       &none       &none       &none       &none       &none           &none       &kp DLLR    &kp LBRC    &kp RBRC    &kp QMARK   &none
+                &none       &none       &none       &none       &none           &kp AMPS    &kp SEMI    CS(LBKT,LBKT) CS(RBKT,RBKT) &kp PRCNT
+                &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none           &kp PIPE    &kp COLON   &kp LPAR      &kp RPAR      &kp AT
+    &none       &none       &none       &none       &none       &none           &none       &kp DLLR    &kp LBRC      &kp RBRC      &kp QMARK &none
                                         &none       &none       &none           &none       &none       &none
       >;
     };
