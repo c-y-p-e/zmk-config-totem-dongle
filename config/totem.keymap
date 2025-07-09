@@ -148,6 +148,7 @@
     B_CS(BSLH, BSLH)
     B_CS(RBKT, RBKT)
     B_CS(LBKT, LBKT)
+    B_CS(DOT, DOT)
   };
 };
 
@@ -263,7 +264,7 @@
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
       bindings = <
                 &kp CARET    &kp LT     &kp GT      CS(BSLH,BSLH) &none         &none       &none       &none       &none       &none  
-                &kp KP_MINUS &kp TILDE  &kp DOT     &kp KP_SLASH  &kp UNDER     &none       &kp LSHFT   &kp LCTRL   &kp LALT    &kp LGUI
+                &kp KP_MINUS &kp TILDE  CS(DOT,DOT) &kp KP_SLASH  &kp UNDER     &none       &kp LSHFT   &kp LCTRL   &kp LALT    &kp LGUI
     &none       &kp EXCL     &kp ASTRK  &kp PLUS    &kp EQUAL     &kp HASH      &none       &none       &none       &none       &none       &none
                                         &none       &none         &none         &none       &none       &none
       >;
