@@ -39,7 +39,7 @@
 #define SYML  4
 #define SYMR  5
 #define NUM   6
-/* #define FUNC  7 */
+#define FUNC  7
 
 // hold-trigger-key-positions definitions
 #define HOLD_TRIGGER_KEYS_THUMBS 32 33 34 35 36 37
