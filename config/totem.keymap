@@ -50,8 +50,7 @@
 #define HL(TAP, MOD) &b_hml MOD TAP     // Homerow mod (left)
 #define HR(TAP, MOD) &b_hmr MOD TAP     // Homerow mod (right)
 #define LR(TAP, LAYER) &b_ltr LAYER TAP // Layer tap (repeat)
-/* #define BT(CHANNEL) &b_bc_##CHANNEL     // Bluetooth toggle */
-#define BT(CHANNEL) &none     // Bluetooth toggle
+#define BT(CHANNEL) &b_bc_##CHANNEL     // Bluetooth toggle
 #define CS(TAP, SHIFT) &b_##TAP##SHIFT  // Custom shift
 #define MM(DIR) &mmv MOVE_##DIR         // Mouse move
 #define MS(DIR) &msc SCRL_##DIR         // Mouse scroll
@@ -63,20 +62,20 @@
 #define CUT &kp LS(DEL)
 #define PASTE &kp LS(INS)
 
-/* // Bluetooth connect/disconnect/clear helper macro */
-/* #define B_BT(CHANNEL) \ */
-/*   b_bd_##CHANNEL: bluetooth_disconnect_##CHANNEL { \ */
-/*     compatible = "zmk,behavior-mod-morph"; \ */
-/*     #binding-cells = <0>; \ */
-/*     bindings = <&bt BT_DISC CHANNEL>, <&m_bcl CHANNEL>; \ */
-/*     mods = <(MOD_LCTL|MOD_RCTL)>; \ */
-/*   }; \ */
-/*   b_bc_##CHANNEL: bluetooth_connect_##CHANNEL { \ */
-/*     compatible = "zmk,behavior-mod-morph"; \ */
-/*     #binding-cells = <0>; \ */
-/*     bindings = <&bt BT_SEL CHANNEL>, <&b_bd_##CHANNEL>; \ */
-/*     mods = <(MOD_LSFT|MOD_RSFT)>; \ */
-/*   }; */
+// Bluetooth connect/disconnect/clear helper macro
+#define B_BT(CHANNEL) \
+  b_bd_##CHANNEL: bluetooth_disconnect_##CHANNEL { \
+    compatible = "zmk,behavior-mod-morph"; \
+    #binding-cells = <0>; \
+    bindings = <&bt BT_DISC CHANNEL>, <&m_bcl CHANNEL>; \
+    mods = <(MOD_LCTL|MOD_RCTL)>; \
+  }; \
+  b_bc_##CHANNEL: bluetooth_connect_##CHANNEL { \
+    compatible = "zmk,behavior-mod-morph"; \
+    #binding-cells = <0>; \
+    bindings = <&bt BT_SEL CHANNEL>, <&b_bd_##CHANNEL>; \
+    mods = <(MOD_LSFT|MOD_RSFT)>; \
+  };
 
 // Custom shift-ed key helper macro
 #define B_CS(TAP, SHIFT) \
@@ -93,18 +92,18 @@
 // MACROS //
 ////////////
 
-/* / { */
-/*   macros { */
-/*     m_bcl: bluetooth_clear_profile { */
-/*       compatible = "zmk,behavior-macro-one-param"; */
-/*       wait-ms = <0>; */
-/*       #binding-cells = <1>; */
-/*       bindings = <&macro_param_1to2>, */
-/*                  <&bt BT_SEL MACRO_PLACEHOLDER>, */
-/*                  <&bt BT_CLR>; */
-/*      }; */
-/*   }; */
-/* }; */
+/ {
+  macros {
+    m_bcl: bluetooth_clear_profile {
+      compatible = "zmk,behavior-macro-one-param";
+      wait-ms = <0>;
+      #binding-cells = <1>;
+      bindings = <&macro_param_1to2>,
+                 <&bt BT_SEL MACRO_PLACEHOLDER>,
+                 <&bt BT_CLR>;
+     };
+  };
+};
 
 ///////////////
 // BEHAVIORS //
@@ -140,10 +139,10 @@
       quick-tap-ms = <QUICK_TAP>;
       bindings = <&mo>, <&kp>;	
     };
-    /* B_BT(0) */
-    /* B_BT(1) */
-    /* B_BT(2) */
-    /* B_BT(3) */
+    B_BT(0)
+    B_BT(1)
+    B_BT(2)
+    B_BT(3)
     B_CS(COMMA, EXCL)
     B_CS(DOT, QMARK)
     B_CS(BSLH, BSLH)
