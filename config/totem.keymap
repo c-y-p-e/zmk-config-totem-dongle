@@ -165,7 +165,7 @@
     B_HMR(O,RGUI)
     B_HMR(I,RALT)
     B_HMR(E,RCTRL)
-    B_HMR(N,LSHFT)
+    B_HMR(N,RSHFT)
     B_BT(0)
     B_BT(1)
     B_BT(2)
