@@ -109,7 +109,7 @@
       wait-ms = <0>;
       #binding-cells = <1>;
       bindings = <&mo HML>,
-                 <&macro_param_1to2>,
+                 <&macro_param_1to1>,
                  <&macro_param_2to2>,
                  <&b_hml MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
     };
@@ -118,7 +118,7 @@
       wait-ms = <0>;
       #binding-cells = <1>;
       bindings = <&mo HMR>,
-                 <&macro_param_1to2>,
+                 <&macro_param_1to1>,
                  <&macro_param_2to2>,
                  <&b_hmr MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
     };
