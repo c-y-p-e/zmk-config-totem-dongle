@@ -49,8 +49,8 @@
 #define HOLD_TRIGGER_KEYS_RIGHT 5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31
 
 // Keymap macros
-#define HML(TAP, MOD) &m_hml MOD TAP    // Homerow mod macro (left)
-#define HMR(TAP, MOD) &m_hmr MOD TAP    // Homerow mod macro (right)
+#define HLM(TAP, MOD) &m_hml MOD TAP    // Homerow mod macro (left)
+#define HRM(TAP, MOD) &m_hmr MOD TAP    // Homerow mod macro (right)
 #define HL(TAP, MOD) &b_hml MOD TAP     // Homerow mod (left)
 #define HR(TAP, MOD) &b_hmr MOD TAP     // Homerow mod (right)
 #define LR(TAP, LAYER) &b_ltr LAYER TAP // Layer tap (repeat)
@@ -226,7 +226,7 @@
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
       bindings = <
                 &kp Q       &kp W       &kp F        &kp P         &kp B        &kp J        &kp L        &kp U          &kp Y         &kp SQT
-                HML(A,LGUI) HML(R,LALT) HML(S,LCTRL) HML(T,LSHFT)  &kp G        &kp M        HMR(N,LSHFT) HMR(E,LCTRL)   HMR(I,LALT)   HMR(O,LGUI)
+                HLM(A,LGUI) HLM(R,LALT) HLM(S,LCTRL) HLM(T,LSHFT)  &kp G        &kp M        HRM(N,LSHFT) HRM(E,LCTRL)   HRM(I,LALT)   HRM(O,LGUI)
     &kp LSHFT   &kp Z       &kp X       &kp C        &kp D         &kp V        &kp K        &kp H        CS(COMMA,EXCL) CS(DOT,QMARK) &kp SEMI   &kp RSHFT
                                         LR(ESC,MEDI) LR(SPACE,NAV) LR(TAB,SYMR) LR(RET,SYML) LR(BSPC,NUM) LR(DEL,FUNC)
       >;
