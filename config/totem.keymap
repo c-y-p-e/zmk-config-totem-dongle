@@ -47,8 +47,8 @@
 #define HOLD_TRIGGER_KEYS_RIGHT 5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31
 
 // Keymap macros
-#define HL(TAP, MOD) &b_hml MOD TAP     // Homerow mod (left)
-#define HR(TAP, MOD) &b_hmr MOD TAP     // Homerow mod (right)
+#define HL(TAP, MOD) &b_hml_##TAP##MOD  // Homerow mod (left)
+#define HR(TAP, MOD) &b_hmr_##TAP##MOD  // Homerow mod (right)
 #define LR(TAP, LAYER) &b_ltr LAYER TAP // Layer tap (repeat)
 #define BT(CHANNEL) &b_bc_##CHANNEL     // Bluetooth toggle
 #define CS(TAP, SHIFT) &b_##TAP##SHIFT  // Custom shift
@@ -56,11 +56,31 @@
 #define MS(DIR) &msc SCRL_##DIR         // Mouse scroll
 
 // Clipboard macros
-#define UNDO &kp LC(Z)
-#define REDO &kp LS(LC(Z))
-#define COPY &kp LC(INS)
-#define CUT &kp LS(DEL)
+#define UNDO  &kp LC(Z)
+#define REDO  &kp LS(LC(Z))
+#define COPY  &kp LC(INS)
+#define CUT   &kp LS(DEL)
 #define PASTE &kp LS(INS)
+
+
+// Homerow mod-morph helper macros
+#define B_HML(TAP, MOD) \
+  b_hml_##TAP##MOD##: homerow_mod_left_##MOD { \
+    compatible = "zmk,behavior-mod-morph"; \
+    #binding-cells = <0>; \
+    bindings = <&b_hml MOD TAP>, <&kp TAP>; \
+    mods = <(MOD_RGUI|MOD_RALT|MOD_RCTL|MOD_RSFT)>; \
+    keep-mods = <(MOD_RGUI|MOD_RALT|MOD_RCTL|MOD_RSFT)>; \
+  };
+
+#define B_HMR(TAP, MOD) \
+  b_hml_##TAP##MOD##: homerow_mod_right_##MOD { \
+    compatible = "zmk,behavior-mod-morph"; \
+    #binding-cells = <0>; \
+    bindings = <&b_hmr MOD TAP>, <&kp TAP>; \
+    mods = <(MOD_LGUI|MOD_LALT|MOD_LCTL|MOD_LSFT)>; \
+    keep-mods = <(MOD_LGUI|MOD_LALT|MOD_LCTL|MOD_LSFT)>; \
+  };
 
 // Bluetooth connect/disconnect/clear helper macro
 #define B_BT(CHANNEL) \
@@ -85,7 +105,6 @@
     bindings = <&kp TAP>, <&kp SHIFT>; \
     mods = <(MOD_LSFT|MOD_RSFT)>; \
   };
-
 //--------------------------------------------------------------//
 
 ////////////
@@ -139,6 +158,14 @@
       quick-tap-ms = <QUICK_TAP>;
       bindings = <&mo>, <&kp>;	
     };
+    B_HML(A,LGUI)
+    B_HML(R,LALT)
+    B_HML(S,LCTRL)
+    B_HML(T,LSHFT)
+    B_HMR(O,RGUI)
+    B_HMR(I,RALT)
+    B_HMR(E,RCTRL)
+    B_HMR(N,LSHFT)
     B_BT(0)
     B_BT(1)
     B_BT(2)
@@ -192,7 +219,7 @@
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
       bindings = <
                 &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J       &kp L        &kp U          &kp Y         &kp SQT
-                HL(A,LGUI)  HL(R,LALT)  HL(S,LCTRL) HL(T,LSHFT) &kp G           &kp M       HR(N,LSHFT)  HR(E,LCTRL)    HR(I,LALT)    HR(O,LGUI)
+                HL(A,LGUI)  HL(R,LALT)  HL(S,LCTRL) HL(T,LSHFT) &kp G           &kp M       HR(N,RSHFT)  HR(E,RCTRL)    HR(I,RALT)    HR(O,RGUI)
     &kp LSHFT   &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K       &kp H        CS(COMMA,EXCL) CS(DOT,QMARK) &kp SEMI   &kp RSHFT
                                      LR(ESC,MEDI) LR(SPACE,NAV) LR(TAB,SYMR)    LR(RET,SYML) LR(BSPC,NUM) LR(DEL,FUNC)
       >;
