@@ -33,13 +33,15 @@
 
 // Layer definitions
 #define BASE  0
-#define MEDI  1
-#define NAV   2
-#define MOUS  3
-#define SYML  4
-#define SYMR  5
-#define NUM   6
-#define FUNC  7
+#define HML   1
+#define HMR   2
+#define MEDI  3
+#define NAV   4
+#define MOUS  5
+#define SYML  6
+#define SYMR  7
+#define NUM   8
+#define FUNC  9
 
 // hold-trigger-key-positions definitions
 #define HOLD_TRIGGER_KEYS_THUMBS 32 33 34 35 36 37
@@ -47,8 +49,8 @@
 #define HOLD_TRIGGER_KEYS_RIGHT 5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31
 
 // Keymap macros
-#define HL(TAP, MOD) &b_hml MOD TAP     // Homerow mod (left)
-#define HR(TAP, MOD) &b_hmr MOD TAP     // Homerow mod (right)
+#define HL(TAP, MOD) &m_hml MOD TAP     // Homerow mod (left)
+#define HR(TAP, MOD) &m_hmr MOD TAP     // Homerow mod (right)
 #define LR(TAP, LAYER) &b_ltr LAYER TAP // Layer tap (repeat)
 #define BT(CHANNEL) &b_bc_##CHANNEL     // Bluetooth toggle
 #define CS(TAP, SHIFT) &b_##TAP##SHIFT  // Custom shift
@@ -101,7 +103,25 @@
       bindings = <&macro_param_1to2>,
                  <&bt BT_SEL MACRO_PLACEHOLDER>,
                  <&bt BT_CLR>;
-     };
+    };
+    m_hml: bluetooth_clear_profile {
+      compatible = "zmk,behavior-macro-one-param";
+      wait-ms = <0>;
+      #binding-cells = <1>;
+      bindings = <&mo HML>,
+                 <&macro_param_1to2>,
+                 <&macro_param_2to2>,
+                 <&b_hml MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+    };
+    m_hml: bluetooth_clear_profile {
+      compatible = "zmk,behavior-macro-one-param";
+      wait-ms = <0>;
+      #binding-cells = <1>;
+      bindings = <&mo HMR>,
+                 <&macro_param_1to2>,
+                 <&macro_param_2to2>,
+                 <&b_hmr MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+    };
   };
 };
 
@@ -195,6 +215,24 @@
                 HL(A,LGUI)  HL(R,LALT)  HL(S,LCTRL) HL(T,LSHFT) &kp G           &kp M       HR(N,LSHFT)  HR(E,LCTRL)    HR(I,LALT)    HR(O,LGUI)
     &kp LSHFT   &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K       &kp H        CS(COMMA,EXCL) CS(DOT,QMARK) &kp SEMI   &kp RSHFT
                                      LR(ESC,MEDI) LR(SPACE,NAV) LR(TAB,SYMR)    LR(RET,SYML) LR(BSPC,NUM) LR(DEL,FUNC)
+      >;
+    };
+
+    hml_layer {
+      bindings = <
+                &trans      &trans      &trans      &trans      &trans          &trans       &trans     &trans      &trans      &trans
+                &trans      &trans      &trans      &trans      &trans          &trans       &kp N      &kp E       &kp I       &kp O
+    &trans      &trans      &trans      &trans      &trans      &trans          &trans       &trans     &trans      &trans      &trans      &trans
+                                        &trans      &trans      &trans          &trans       &trans     &trans
+      >;
+    };
+
+    hmr_layer {
+      bindings = <
+                &trans      &trans      &trans      &trans      &trans          &trans       &trans     &trans      &trans      &trans
+                &kp A       &kp R       &kp S       &kp T       &trans          &trans       &trans     &trans      &trans      &trans
+    &trans      &trans      &trans      &trans      &trans      &trans          &trans       &trans     &trans      &trans      &trans      &trans
+                                        &trans      &trans      &trans          &trans       &trans     &trans
       >;
     };
 
