@@ -116,6 +116,7 @@
       #binding-cells = <2>;
       tapping-term-ms = <TAPPING_TERM_HM>;
       require-prior-idle-ms = <PRIOR_IDLE>;
+      quick-tap-ms = <QUICK_TAP>;
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <HOLD_TRIGGER_KEYS_RIGHT HOLD_TRIGGER_KEYS_THUMBS>;
@@ -126,6 +127,7 @@
       #binding-cells = <2>;
       tapping-term-ms = <TAPPING_TERM_HM>;
       require-prior-idle-ms = <PRIOR_IDLE>;
+      quick-tap-ms = <QUICK_TAP>;
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
       hold-trigger-key-positions = <HOLD_TRIGGER_KEYS_LEFT HOLD_TRIGGER_KEYS_THUMBS>;
