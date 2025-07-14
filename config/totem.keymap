@@ -49,8 +49,10 @@
 #define HOLD_TRIGGER_KEYS_RIGHT 5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31
 
 // Keymap macros
-#define HL(TAP, MOD) &m_hml MOD TAP     // Homerow mod (left)
-#define HR(TAP, MOD) &m_hmr MOD TAP     // Homerow mod (right)
+#define HML(TAP, MOD) &m_hml MOD TAP    // Homerow mod macro (left)
+#define HMR(TAP, MOD) &m_hmr MOD TAP    // Homerow mod macro (right)
+#define HL(TAP, MOD) &b_hml MOD TAP     // Homerow mod (left)
+#define HR(TAP, MOD) &b_hmr MOD TAP     // Homerow mod (right)
 #define LR(TAP, LAYER) &b_ltr LAYER TAP // Layer tap (repeat)
 #define BT(CHANNEL) &b_bc_##CHANNEL     // Bluetooth toggle
 #define CS(TAP, SHIFT) &b_##TAP##SHIFT  // Custom shift
@@ -223,17 +225,17 @@
 //                                     ┃    ESC    ┃    SPC    ┃    TAB    ┃   ┃    RET    ┃   BSPC    ┃    DEL    ┃
 //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
       bindings = <
-                &kp Q       &kp W       &kp F       &kp P       &kp B           &kp J       &kp L        &kp U          &kp Y         &kp SQT
-                HL(A,LGUI)  HL(R,LALT)  HL(S,LCTRL) HL(T,LSHFT) &kp G           &kp M       HR(N,LSHFT)  HR(E,LCTRL)    HR(I,LALT)    HR(O,LGUI)
-    &kp LSHFT   &kp Z       &kp X       &kp C       &kp D       &kp V           &kp K       &kp H        CS(COMMA,EXCL) CS(DOT,QMARK) &kp SEMI   &kp RSHFT
-                                     LR(ESC,MEDI) LR(SPACE,NAV) LR(TAB,SYMR)    LR(RET,SYML) LR(BSPC,NUM) LR(DEL,FUNC)
+                &kp Q       &kp W       &kp F        &kp P         &kp B        &kp J        &kp L        &kp U          &kp Y         &kp SQT
+                HML(A,LGUI) HML(R,LALT) HML(S,LCTRL) HML(T,LSHFT)  &kp G        &kp M        HMR(N,LSHFT) HMR(E,LCTRL)   HMR(I,LALT)   HMR(O,LGUI)
+    &kp LSHFT   &kp Z       &kp X       &kp C        &kp D         &kp V        &kp K        &kp H        CS(COMMA,EXCL) CS(DOT,QMARK) &kp SEMI   &kp RSHFT
+                                        LR(ESC,MEDI) LR(SPACE,NAV) LR(TAB,SYMR) LR(RET,SYML) LR(BSPC,NUM) LR(DEL,FUNC)
       >;
     };
 
     hml_layer {
       bindings = <
                 &trans      &trans      &trans      &trans      &trans          &trans       &trans     &trans      &trans      &trans
-                &trans      &trans      &trans      &trans      &trans          &trans       &kp N      &kp E       &kp I       &kp O
+                HL(A,LGUI)  HL(R,LALT)  HL(S,LCTRL) HL(T,LSHFT) &trans          &trans       &kp N      &kp E       &kp I       &kp O
     &trans      &trans      &trans      &trans      &trans      &trans          &trans       &trans     &trans      &trans      &trans      &trans
                                         &trans      &trans      &trans          &trans       &trans     &trans
       >;
@@ -241,10 +243,10 @@
 
     hmr_layer {
       bindings = <
-                &trans      &trans      &trans      &trans      &trans          &trans       &trans     &trans      &trans      &trans
-                &kp A       &kp R       &kp S       &kp T       &trans          &trans       &trans     &trans      &trans      &trans
-    &trans      &trans      &trans      &trans      &trans      &trans          &trans       &trans     &trans      &trans      &trans      &trans
-                                        &trans      &trans      &trans          &trans       &trans     &trans
+                &trans      &trans      &trans      &trans      &trans          &trans       &trans      &trans      &trans      &trans
+                &kp A       &kp R       &kp S       &kp T       &trans          &trans       HR(N,LSHFT) HR(E,LCTRL) HR(I,LALT)  HR(O,LGUI)
+    &trans      &trans      &trans      &trans      &trans      &trans          &trans       &trans      &trans      &trans      &trans      &trans
+                                        &trans      &trans      &trans          &trans       &trans      &trans
       >;
     };
 
