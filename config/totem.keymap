@@ -47,13 +47,13 @@
 #define HOLD_TRIGGER_KEYS_RIGHT 5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31
 
 // Keymap macros
-#define HL(TAP, MOD) &b_hml_##TAP##MOD  // Homerow mod (left)
-#define HR(TAP, MOD) &b_hmr_##TAP##MOD  // Homerow mod (right)
-#define LR(TAP, LAYER) &b_ltr LAYER TAP // Layer tap (repeat)
-#define BT(CHANNEL) &b_bc_##CHANNEL     // Bluetooth toggle
-#define CS(TAP, SHIFT) &b_##TAP##SHIFT  // Custom shift
-#define MM(DIR) &mmv MOVE_##DIR         // Mouse move
-#define MS(DIR) &msc SCRL_##DIR         // Mouse scroll
+#define HL(TAP, MOD) &b_hml_##TAP##_##MOD // Homerow mod (left)
+#define HR(TAP, MOD) &b_hmr_##TAP##_##MOD // Homerow mod (right)
+#define LR(TAP, LAYER) &b_ltr LAYER TAP   // Layer tap (repeat)
+#define BT(CHANNEL) &b_bc_##CHANNEL       // Bluetooth toggle
+#define CS(TAP, SHIFT) &b_##TAP##SHIFT    // Custom shift
+#define MM(DIR) &mmv MOVE_##DIR           // Mouse move
+#define MS(DIR) &msc SCRL_##DIR           // Mouse scroll
 
 // Clipboard macros
 #define UNDO  &kp LC(Z)
@@ -65,7 +65,7 @@
 
 // Homerow mod-morph helper macros
 #define B_HML(TAP, MOD) \
-  b_hml_##TAP##MOD##: homerow_mod_left_##MOD { \
+  b_hml_##TAP##_##MOD##: homerow_mod_left_##MOD { \
     compatible = "zmk,behavior-mod-morph"; \
     #binding-cells = <0>; \
     bindings = <&b_hml MOD TAP>, <&kp TAP>; \
@@ -74,7 +74,7 @@
   };
 
 #define B_HMR(TAP, MOD) \
-  b_hml_##TAP##MOD##: homerow_mod_right_##MOD { \
+  b_hmr_##TAP##_##MOD##: homerow_mod_right_##MOD { \
     compatible = "zmk,behavior-mod-morph"; \
     #binding-cells = <0>; \
     bindings = <&b_hmr MOD TAP>, <&kp TAP>; \
@@ -99,7 +99,7 @@
 
 // Custom shift-ed key helper macro
 #define B_CS(TAP, SHIFT) \
-  b_##TAP##SHIFT##: TAP##_##SHIFT { \
+  b_##TAP##_##SHIFT##: TAP##_##SHIFT { \
     compatible = "zmk,behavior-mod-morph"; \
     #binding-cells = <0>; \
     bindings = <&kp TAP>, <&kp SHIFT>; \
