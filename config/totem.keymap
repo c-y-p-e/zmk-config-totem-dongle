@@ -51,7 +51,7 @@
 #define HR(TAP, MOD) &b_hmr_##TAP##_##MOD // Homerow mod (right)
 #define LR(TAP, LAYER) &b_ltr LAYER TAP   // Layer tap (repeat)
 #define BT(CHANNEL) &b_bc_##CHANNEL       // Bluetooth toggle
-#define CS(TAP, SHIFT) &b_##TAP##SHIFT    // Custom shift
+#define CS(TAP, SHIFT) &b_##TAP##_##SHIFT // Custom shift
 #define MM(DIR) &mmv MOVE_##DIR           // Mouse move
 #define MS(DIR) &msc SCRL_##DIR           // Mouse scroll
 
