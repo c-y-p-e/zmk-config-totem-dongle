@@ -107,7 +107,7 @@
     m_hml: homerow_mod_layer_left {
       compatible = "zmk,behavior-macro-one-param";
       wait-ms = <0>;
-      #binding-cells = <1>;
+      #binding-cells = <2>;
       bindings = <&mo HML>,
                  <&macro_param_1to1>,
                  <&macro_param_2to2>,
@@ -116,7 +116,7 @@
     m_hmr: homerow_mod_layer_right {
       compatible = "zmk,behavior-macro-one-param";
       wait-ms = <0>;
-      #binding-cells = <1>;
+      #binding-cells = <2>;
       bindings = <&mo HMR>,
                  <&macro_param_1to1>,
                  <&macro_param_2to2>,
