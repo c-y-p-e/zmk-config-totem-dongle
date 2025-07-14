@@ -104,7 +104,7 @@
                  <&bt BT_SEL MACRO_PLACEHOLDER>,
                  <&bt BT_CLR>;
     };
-    m_hml: bluetooth_clear_profile {
+    m_hml: homerow_mod_layer_left {
       compatible = "zmk,behavior-macro-one-param";
       wait-ms = <0>;
       #binding-cells = <1>;
@@ -113,7 +113,7 @@
                  <&macro_param_2to2>,
                  <&b_hml MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
     };
-    m_hml: bluetooth_clear_profile {
+    m_hmr: homerow_mod_layer_right {
       compatible = "zmk,behavior-macro-one-param";
       wait-ms = <0>;
       #binding-cells = <1>;
